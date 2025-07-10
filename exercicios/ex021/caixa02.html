@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grouping Tag</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: dimgray;
+
+        }
+
+        header{
+            width: 600px;
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        nav {
+        background-color: grey;
+        padding: 5px;
+        margin: 5px;
+        box-shadow: 3px 4px 3px rgba(139, 139, 139, 0.699);
+        border-radius: 3px 10px;
+        }  
+
+        nav > a
+        {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            margin-right: 3px;
+        }
+
+        nav > a:hover
+        {
+            text-decoration: underline;
+
+        }
+
+        main
+        {
+            background-color: white;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        article
+        {
+            background-color: grey;
+        }
+
+        article > aside
+        {
+            width: 300px;
+            background-color: lightgrey;
+            padding: 10px;
+            margin: 10px;
+
+        }
+
+        footer
+        {
+            width: 600px;
+            background-color: black;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        div#bola
+        {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            margin: 10px;
+            border-radius: 45%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+    <h1>O meu site</h1>
+    <nav>
+        
+        <p><a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a>
+        <a href="#">Link</a></p>
+    </nav>
+    </header>
+
+    <main>
+        <section id="assuntos">
+                <p style="text-decoration: bold;";>Desporto e Tecnologia</p>
+        </section>
+        <section id="noticias">
+
+            <article>
+                    <aside>
+                        <h2>Notícia sobre o Brasil</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, ducimus? Obcaecati fugiat nihil quo labore mollitia blanditiis corrupti exercitationem porro. Hic aliquam modi aliquid temporibus distinctio ad. Quia, voluptates alias!</p>
+                        <p>Artigo escrito por José Saramago</p>
+                    </aside>
+            </article>
+
+            <article>
+
+            </article>
+        </section>
+    </main>
+
+    <footer>
+            <p>Desenvolvido por Mim</p>
+    </footer>
+
+    <div id="bola">
+
+    </div>
+</body>
+</html>

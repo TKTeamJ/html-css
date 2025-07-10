@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimédia HTML5</title>
+</head>
+<body>
+        <h1>Imagem Dinâmica</h1>
+        <p>Abre o  site em vários dispositivos ou aumenta e diminui o tamanho do browser</p>
+
+        <picture>
+            <source media="(max-width: 750px)" srcset="imagens/foto-p.png" type="image/png">
+            <source media="(max-width: 1050px)" srcset="imagens/foto-m.png" type="image/png">
+            <img src="imagens/foto-g.png" alt="Imagem Flexivél">
+        </picture>
+
+        <h1>Áudios</h1>
+        <p>Vamos aprender a reproduzir áudios em HTML5.</p>
+        <audio preload= "auto" autoplay controls loop>
+        <source src="media/Blah! (Slowed) - Nomi XD [ Edit Audio ].mp3"  type="audio/mpeg">
+        <source src="media/Blah! (Slowed) - Nomi XD [ Edit Audio ].ogg" type="audio/ogg">
+        <source src="media/Blah! (Slowed) - Nomi XD [ Edit Audio ].wav" type="audio/wav">
+        <p>Não foi possível reproduzir o áudio
+        <a href="media/Blah! (Slowed) - Nomi XD [ Edit Audio ].mp3"> Clique aqui para baixar a música</a>
+    </audio></p>
+        <!-- -->
+</body>
+</html>
