@@ -1,2 +1,63 @@
 @charset "Utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+body {
+  font-family: sans-serif;
+  background-color: #729DF2; 
+  padding: 30px;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #020873; 
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+td {
+  border: 2px solid #040DBF; 
+  background-color: #ffffff; 
+  width: 180px;
+  height: 100px;
+  text-align: center;
+  vertical-align: top;
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+td:hover {
+  background-color: #6AA5D9; 
+}
+
+td:hover .sumario {
+  display: block;
+}
+
+.data {
+  font-weight: bold;
+  color: #030A8C; 
+  margin-bottom: 5px;
+}
+
+.sumario {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #f7faff;
+  border: 1px solid #6AA5D9; 
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-size: 14px;
+  color: #020873;
+  z-index: 100;
+}
