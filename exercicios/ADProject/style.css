@@ -3,29 +3,57 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  background-image: linear-gradient(to right, #6AA5D9, #447ff5); 
+  background-image: linear-gradient(to right, #85b5df, #447ff5);
   margin: 0;
-  padding: 0;  
-} 
+  padding: 0;
+}
 
-p
-{
-font-weight: 550;
+p {
+  font-weight: 550;
+  color: #1a1a1a;
+  line-height: 1.6;
+  margin: 10px 0;
 }
 
 h1 {
-  color: #020873; 
+  color: #020873;
   text-align: center;
 }
 
+h2, h3 {
+  color: #072d68;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #072d68;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  background-color: white;
+  width: 600px;
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgba(191, 177, 159, 0.384);
+  box-sizing: border-box;
+}
+
+/* Tabela de calendário */
 table {
   border-collapse: collapse;
   margin: 0 auto;
 }
 
 td {
-  border: 2px solid #040DBF; 
-  background-color: #ffffff; 
+  border: 2px solid #040DBF;
+  background-color: #ffffff;
   width: 180px;
   height: 100px;
   text-align: center;
@@ -37,7 +65,7 @@ td {
 }
 
 td:hover {
-  background-color: #6AA5D9; 
+  background-color: #6AA5D9;
 }
 
 td:hover .sumario {
@@ -46,7 +74,7 @@ td:hover .sumario {
 
 .data {
   font-weight: bold;
-  color: #030A8C; 
+  color: #030A8C;
   margin-bottom: 5px;
 }
 
@@ -57,7 +85,7 @@ td:hover .sumario {
   left: 0;
   width: 100%;
   background: #f7faff;
-  border: 1px solid #6AA5D9; 
+  border: 1px solid #6AA5D9;
   border-radius: 6px;
   padding: 5px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -66,25 +94,15 @@ td:hover .sumario {
   z-index: 100;
 }
 
-main {
-  padding-top: 20px;
-  background-color: white;
-  width: 600px;
-  padding: 10px;
-  margin: auto;
-  border-radius: 20px;
-  box-shadow: 5px 5px 15px rgba(191, 177, 159, 0.384);
-}
-
-
+/* Header */
 header {
-  background: #043bd3;
-  color: #E0E7FF; 
+  background: #022ca0;
+  color: #E0E7FF;
   padding: 15px 0;
   box-shadow: 0 2px 8px rgba(30, 58, 138, 0.6);
-  position: sticky; /*Ficar estático mesmo que se dê scroll no site*/
+  position: sticky;
   top: 0;
-  
+  z-index: 999;
 }
 
 .container-header {
@@ -105,11 +123,11 @@ header h1 {
   font-size: 1.8rem;
   margin: 0 15px;
   flex-grow: 1;
-  color: #CBD5E1; 
+  color: #CBD5E1;
 }
 
 nav a {
-  color: #A5B4FC; 
+  color: #A5B4FC;
   text-decoration: none;
   margin-left: 20px;
   font-weight: 600;
@@ -117,14 +135,14 @@ nav a {
 }
 
 nav a:hover {
-  color: #E0E7FF; 
+  color: #E0E7FF;
   text-decoration: underline;
 }
 
-
+/* Footer */
 footer {
-  background: #043bd3; 
-  color: #D1D5DB; 
+  background: #043bd3;
+  color: #D1D5DB;
   padding: 15px 20px;
   text-align: center;
   margin-top: 40px;
@@ -135,4 +153,49 @@ footer {
 .container-footer {
   max-width: 900px;
   margin: 0 auto;
+}
+
+/* Responsividade para quando o ecrã for menor que 768px*/
+@media (max-width: 768px) {
+  main {
+    width: 90%;
+    padding: 15px;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.4em;
+  }
+
+  td {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+  }
+
+  footer {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  footer img {
+    height: 24px;
+  }
+
+  .container-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    margin: 10px 0;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 10px 10px;
+  }
 }
