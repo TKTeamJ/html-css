@@ -6,7 +6,17 @@ body {
   background-image: linear-gradient(to right, #85b5df, #447ff5);
   margin: 0;
   padding: 0;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
 }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+
 
 p {
   font-weight: 550;
