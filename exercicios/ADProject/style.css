@@ -11,13 +11,13 @@ body {
 }
 
 
-
+/*Usado para transicoes*/
 @keyframes fadeIn {
   to {
     opacity: 1;
   }
 }
-/*Usado para transicoes*/
+
 
 
 

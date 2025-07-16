@@ -293,7 +293,8 @@
         <option value="ZW">Zimbabué</option>
         </select>
 
-        <label for="subject">Situação</label>
+        <input type="email" name="email" placeholder="Email" required>
+        <br>
         <textarea name="subject" id="subject" placeholder="Descreve o motivo de contacto..." style="height:200px"></textarea>
 
         <input type="submit" value="Submeter">
@@ -304,8 +305,25 @@
   </div>
 
   </main>
+</form>
 
-  
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init("service_w949h2h");
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault(); // Evita recarregar a página
+
+    emailjs.sendForm("service_w949h2h", "template_2i79mlw", this)
+      .then(() => {
+        alert("Mensagem enviada com sucesso!");
+      }, (error) => {
+        alert("Erro ao enviar: " + JSON.stringify(error));
+      });
+  });
+</script>
 
 
 
