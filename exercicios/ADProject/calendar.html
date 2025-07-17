@@ -151,61 +151,68 @@
 </table>
 </div>
 
-<div style="margin-top: 20px;">
-  <button onclick="exportarTabela('json')">Exportar como JSON</button>
-  <button onclick="exportarTabela('xml')">Exportar como XML</button>
+<div class="export-buttons">
+  <button onclick="exportarSumarios()">Extrarir (JSON)</button>
+  <button onclick="exportarSumariosXML()">Extrair (XML)</button>
+  <button onclick="exportarSumariosCSV()">Extrair (Excel/CSV)</button>
 </div>
 
-<footer>
+<script>
+  function exportarSumarios() {
+    const sumarios = [];
+    const elementos = document.querySelectorAll("table td");
+    elementos.forEach(el => {
+      const data = el.querySelector(".data")?.textContent || "";
+      const texto = el.querySelector(".sumario")?.textContent || "";
+      sumarios.push({ data, texto });
+    });
+    const json = JSON.stringify(sumarios, null, 2);
+    const blob = new Blob([json], { type: "application/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "sumarios.json";
+    link.click();
+  }
+
+  function exportarSumariosXML() {
+    const elementos = document.querySelectorAll("table td");
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<sumarios>\n';
+    elementos.forEach(el => {
+      const data = el.querySelector(".data")?.textContent.trim() || "";
+      const texto = el.querySelector(".sumario")?.textContent.trim() || "";
+      xml += `  <sumario>\n    <data>${data}</data>\n    <texto>${texto}</texto>\n  </sumario>\n`;
+    });
+    xml += '</sumarios>';
+    const blob = new Blob([xml], { type: "application/xml" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "sumarios.xml";
+    link.click();
+  }
+
+  function exportarSumariosCSV() {
+    const elementos = document.querySelectorAll("table td");
+    let csv = "Data,Texto\n";
+    elementos.forEach(el => {
+      const data = el.querySelector(".data")?.textContent.trim() || "";
+      const texto = el.querySelector(".sumario")?.textContent.trim().replace(/"/g, '""') || "";
+      csv += `"${data}","${texto}"\n`;
+    });
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "sumarios.csv";
+    link.click();
+  }
+</script>
+
+
+
+ <footer>
     <div class="container-footer">
       <p>© Alidata | Todos os direitos reservados.</p>
     </div>
-</footer>
-
-  
-<script>
-function exportarTabela(tipo) {
-  const tabela = document.getElementById("tabela");
-  const linhas = tabela.querySelectorAll("tbody tr");
-  let dados = [];
-
-  linhas.forEach(linha => {
-    const colunas = linha.querySelectorAll("td");
-    dados.push({
-      sumario: colunas[0].innerText.trim(),
-      data: colunas[1].innerText.trim()
-    });
-  });
-
-  let conteudo;
-  let tipoFicheiro;
-  let extensao;
-
-  if (tipo === "json") {
-    conteudo = JSON.stringify(dados, null, 2);
-    tipoFicheiro = "application/json";
-    extensao = "json";
-  } else if (tipo === "xml") {
-    conteudo = "<?xml version=\"1.0\"?>\n<sumarios>\n";
-    dados.forEach(item => {
-      conteudo += `  <sumario>\n`;
-      conteudo += `    <titulo>${item.sumario}</titulo>\n`;
-      conteudo += `    <data>${item.data}</data>\n`;
-      conteudo += `  </sumario>\n`;
-    });
-    conteudo += "</sumarios>";
-    tipoFicheiro = "application/xml";
-    extensao = "xml";
-  }
-
-  const blob = new Blob([conteudo], { type: tipoFicheiro });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `sumarios.${extensao}`;
-  link.click();
-}
-</script>
-
+  </footer>
 
 </body>
 </html>
