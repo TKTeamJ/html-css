@@ -152,10 +152,15 @@
 </div>
 
 <div class="export-buttons">
-  <button onclick="exportarSumarios()">Extrarir (JSON)</button>
-  <button onclick="exportarSumariosXML()">Extrair (XML)</button>
-  <button onclick="exportarSumariosCSV()">Extrair (Excel/CSV)</button>
+  <button onclick="exportarSumarios()">Exportar JSON</button>
+  <button onclick="exportarSumariosXML()">Exportar XML</button>
+  <button onclick="exportarSumariosCSV()">Exportar CSV</button>
+  <button onclick="exportarSumariosPDF()">Exportar PDF</button>
+
+
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
   function exportarSumarios() {
@@ -204,6 +209,53 @@
     link.download = "sumarios.csv";
     link.click();
   }
+
+ async function exportarSumariosPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const nome = "João Mateus"; 
+    const horas = "8"; 
+    const celulas = document.querySelectorAll("table td");
+
+    let y = 10;
+    const alturaBloco = 35;
+
+    celulas.forEach((td, index) => {
+      const data = td.querySelector(".data")?.textContent.trim() || "";
+      const texto = td.querySelector(".sumario")?.textContent.trim() || "";
+
+      doc.setFontSize(12);
+
+
+      doc.rect(10, y, 50, 10);
+      doc.text(`Data: ${data}`, 12, y + 7);
+
+
+      doc.rect(60, y, 30, 10);
+      doc.text(`${horas} Horas`, 62, y + 7);
+
+
+      doc.rect(90, y, 70, 10);
+      doc.text(`Nome: ${nome}`, 92, y + 7);
+
+
+      doc.rect(10, y + 10, 150, alturaBloco - 10);
+      const textoCortado = doc.splitTextToSize(`Sumário: ${texto}`, 145);
+      const linhasLimitadas = textoCortado.slice(0, 6); // máximo 6 linhas
+      doc.text(linhasLimitadas, 12, y + 17);
+
+      y += alturaBloco;
+
+      if (y > 270 && index < celulas.length - 1) {
+        doc.addPage();
+        y = 10;
+      }
+    });
+
+    doc.save("sumarios.pdf");
+  }
+
 </script>
 
 
