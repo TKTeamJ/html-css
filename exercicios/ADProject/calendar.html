@@ -151,6 +151,11 @@
 </table>
 </div>
 
+<div style="margin-top: 20px;">
+  <button onclick="exportarTabela('json')">Exportar como JSON</button>
+  <button onclick="exportarTabela('xml')">Exportar como XML</button>
+</div>
+
 <footer>
     <div class="container-footer">
       <p>© Alidata | Todos os direitos reservados.</p>
@@ -158,6 +163,49 @@
 </footer>
 
   
+<script>
+function exportarTabela(tipo) {
+  const tabela = document.getElementById("tabela");
+  const linhas = tabela.querySelectorAll("tbody tr");
+  let dados = [];
+
+  linhas.forEach(linha => {
+    const colunas = linha.querySelectorAll("td");
+    dados.push({
+      sumario: colunas[0].innerText.trim(),
+      data: colunas[1].innerText.trim()
+    });
+  });
+
+  let conteudo;
+  let tipoFicheiro;
+  let extensao;
+
+  if (tipo === "json") {
+    conteudo = JSON.stringify(dados, null, 2);
+    tipoFicheiro = "application/json";
+    extensao = "json";
+  } else if (tipo === "xml") {
+    conteudo = "<?xml version=\"1.0\"?>\n<sumarios>\n";
+    dados.forEach(item => {
+      conteudo += `  <sumario>\n`;
+      conteudo += `    <titulo>${item.sumario}</titulo>\n`;
+      conteudo += `    <data>${item.data}</data>\n`;
+      conteudo += `  </sumario>\n`;
+    });
+    conteudo += "</sumarios>";
+    tipoFicheiro = "application/xml";
+    extensao = "xml";
+  }
+
+  const blob = new Blob([conteudo], { type: tipoFicheiro });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `sumarios.${extensao}`;
+  link.click();
+}
+</script>
+
 
 </body>
 </html>
