@@ -95,8 +95,8 @@ td {
   border: 2px solid #040DBF;
   background-color: #ffffff;
   width: calc(100% / 5);
-  min-width: 120px;
-  height: 100px;
+  min-width: 90px;
+  height: 70px;
   text-align: center;
   vertical-align: top;
   position: relative;
