@@ -148,6 +148,21 @@ header {
   z-index: 999;
 }
 
+tr:last-child td:hover .sumario {
+  top: auto;
+  bottom: 110%;
+}
+
+td.ultima-linha:hover .sumario {
+  top: auto;
+  bottom: 110%;
+}
+
+
+td.penultima-linha:hover .sumario {
+  top: auto;
+  bottom: 110%;
+}
 .container-header {
   max-width: 900px;
   margin: 0 auto;
