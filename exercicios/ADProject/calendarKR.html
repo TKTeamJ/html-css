@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>Alidata - 인턴십 일정</title>
 </head>
+
 <body>
 
 <header style="position:sticky; z-index: 1000;">
@@ -166,6 +167,8 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.1/dist/fonts/NotoSansKR-Regular-normal.js"></script>
+
 
 <script>
   function exportarSumarios() {
@@ -218,6 +221,7 @@
   async function exportarSumariosPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
+    doc.setFont("NotoSansKR-Regular");
 
     const nomeFormando = "João Mateus";
     const entidade = "기관명";
@@ -233,7 +237,7 @@
 
     const desenharCabecalho = () => {
       doc.setFontSize(11);
-      doc.setFont("helvetica", "bold");
+      doc.setFont("NotoSansKR-Regular", "bold");
       doc.rect(margemEsquerda, y, 190, 28);
       doc.text("Agrupamento de Escolas Domingos Sequeira", margemEsquerda + 2, y + 6);
       doc.text("시스템 관리 및 프로그래밍 기술 전문 과정", margemEsquerda + 2, y + 12);
@@ -273,37 +277,37 @@
 
     // Bloco com Data, Nº Horas e Nome do Formando
     doc.setFontSize(10);
-    doc.setFont("helvetica", "bold");
+    doc.setFont("NotoSansKR-Regular", "bold");
     doc.rect(margemEsquerda, y, 50, 8);
     doc.text("날짜", margemEsquerda + 2, y + 6);
-    doc.setFont("helvetica", "normal");
+    doc.setFont("NotoSansKR-Regular", "normal");
     doc.text(data, margemEsquerda + 25, y + 6);
 
-    doc.setFont("helvetica", "bold");
+    doc.setFont("NotoSansKR-Regular", "bold");
     doc.rect(margemEsquerda + 50, y, 30, 8);
     doc.text("시간 수", margemEsquerda + 52, y + 6);
-    doc.setFont("helvetica", "normal");
+    doc.setFont("NotoSansKR-Regular", "normal");
     doc.text(horas, margemEsquerda + 70, y + 6);
 
-    doc.setFont("helvetica", "bold");
+    doc.setFont("NotoSansKR-Regular", "bold");
     doc.rect(margemEsquerda + 80, y, 110, 8);
     doc.text("수강생 이름", margemEsquerda + 82, y + 6);
     doc.text(nomeFormando, margemEsquerda + 140, y + 6);
-    doc.setFont("helvetica", "normal");
+    doc.setFont("NotoSansKR-Regular", "normal");
 
     y += 8;
 
     // Caixa do sumário
     doc.setFontSize(11);
-    doc.setFont("helvetica", "normal");
+    doc.setFont("NotoSansKR-Regular", "normal");
     doc.rect(margemEsquerda, y, 190, alturaSumario - 8);
 
     // Texto "Sumário:" dentro da caixa, alinhado
-    doc.setFont("helvetica", "bold");
+    doc.setFont("NotoSansKR-Regular", "bold");
     doc.text("요약:", margemEsquerda + 2, y + 6);
 
     // Conteúdo do sumário, com margem e largura limitada
-    doc.setFont("helvetica", "normal");
+    doc.setFont("NotoSansKR-Regular", "normal");
     const textoCortado = doc.splitTextToSize(texto, 186);
     const linhas = textoCortado.slice(0, 5);
     doc.text(linhas, margemEsquerda + 2, y + 12);
